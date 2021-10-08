@@ -92,6 +92,7 @@ public class login {
 			
 			Object[][] houseD = new Object[200][17];
 			List<HarEntry> harColl = bmps.getHar().getLog().getEntries();
+			int j = 0;
 			for (HarEntry harnetry : harColl) {
 				String currentURL = harnetry.getRequest().getUrl();
 				String currentAPI = currentURL.substring(currentURL.lastIndexOf("/") + 1, currentURL.length()).trim();
@@ -104,26 +105,27 @@ public class login {
 					jobj = jobj.getJSONObject("data");
 					JSONArray jarr = jobj.getJSONArray("list");
 					
-					for (int i = 1; i < jarr.length(); i++) {
+					for (int i =0; i < jarr.length(); i++) {
 						jobj = jarr.getJSONObject(i);
 						System.out.println(jobj.toString());
-						houseD[i - 1][0] = jobj.getInt("date_start_days");
-						houseD[i - 1][1] = jobj.getString("ml_num_merge");
-						houseD[i - 1][2] = jobj.getInt("date_start_days");
-						houseD[i - 1][3] = jobj.getString("price");
-						houseD[i - 1][4] = jobj.getInt("date_added_days");
-						houseD[i - 1][5] = jobj.getInt("price_int");
-						houseD[i - 1][6] = jobj.getInt("date_start_month");
-						houseD[i - 1][7] = jobj.getInt("list_days");
-						houseD[i - 1][8] = jobj.getString("date_update");
-						houseD[i - 1][9] = jobj.getString("community_name");
-						houseD[i - 1][10] = jobj.getString("province");
-						houseD[i - 1][11] = jobj.getString("price_abbr");
-						houseD[i - 1][12] = jobj.getJSONObject("land").getInt("depth");
-						houseD[i - 1][13] = jobj.getJSONObject("land").getInt("front");
-						houseD[i - 1][14] = jobj.getString("municipality_name");
-						houseD[i - 1][15] = jobj.getString("house_style");
-						houseD[i - 1][16] = jobj.getString("house_type_name");
+						houseD[j][0] = jobj.getInt("date_start_days");
+						houseD[j][1] = jobj.getString("ml_num_merge");
+						houseD[j][2] = jobj.getInt("date_start_days");
+						houseD[j][3] = jobj.getString("price");
+						houseD[j][4] = jobj.getInt("date_added_days");
+						houseD[j][5] = jobj.getInt("price_int");
+						houseD[j][6] = jobj.getInt("date_start_month");
+						houseD[j][7] = jobj.getInt("list_days");
+						houseD[j][8] = jobj.getString("date_update");
+						houseD[j][9] = jobj.getString("community_name");
+						houseD[j][10] = jobj.getString("province");
+						houseD[j][11] = jobj.getString("price_abbr");
+						houseD[j][12] = jobj.getJSONObject("land").getInt("depth");
+						houseD[j][13] = jobj.getJSONObject("land").getInt("front");
+						houseD[j][14] = jobj.getString("municipality_name");
+						houseD[j][15] = jobj.getString("house_style");
+						houseD[j][16] = jobj.getString("house_type_name");
+						j++;
 					}
 				}
 			}
